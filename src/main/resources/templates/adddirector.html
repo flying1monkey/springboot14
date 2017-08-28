@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="base :: thymehead"></th:block>
+    <title>Relationships!</title>
+</head>
+<body>
+<th:block th:replace="base :: thymenav"></th:block>
+
+<header class="masthead">
+    <div class="header-content">
+        <div class="header-content-inner">
+            <h1 id="homeHeading">Your Favorite Source of Free Bootstrap Themes</h1>
+            <hr/>
+            <div th:each="director : ${directors}">
+                <h2 th:text="${director.name}"></h2>
+                <h6 th:inline="text">specializing in [[${director.genre}]]</h6>
+                <ul>
+                    <th:block th:each="movie : ${director.movies}">
+                        <li th:inline="text"><b>[[${movie.title}]]</b> released in [[${movie.year}]].</li>
+                    </th:block>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<th:block th:replace="base :: thymejs"/>
+</body>
+</html>
