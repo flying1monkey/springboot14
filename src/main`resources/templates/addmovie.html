@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="base :: thymehead"></th:block>
+    <title>Add a movie</title>
+</head>
+<body>
+<th:block th:replace="base :: thymenav"></th:block>
+<header class="masthead">
+    <div class="header-content">
+        <div class="header-content-inner container">
+            <h1 id="homeHeading">Add a new movie</h1>
+            <hr/>
+            <form action="#" th:action="@{/addmovie}" th:object="${newmovie}" method="post">
+                <!--Hidden field for edits-->
+                <input type="hidden" th:field="*{id}"/>
+                <div class="row justify-content-center">
+                    <div class="col col-sm-8 form-group">
+                        <!--Movie name-->
+                        <label for="title">Title:</label>
+                        <input type="text" class="form-control" th:field="*{title}" id="title" placeholder="'Titanic'" autofocus="autofocus"/>
+                        <!--<span th:if="${#fields.hasErrors('schoolName')}" th:errors="*{schoolName}"/>-->
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col col-sm-4 form-group">
+                        <label for="year">Release Year:</label>
+                        <input type="text" class="form-control" th:field="*{year}" id="year" placeholder="1997"/>
+                        <!--<span th:if="${#fields.hasErrors('degree')}" th:errors="*{degree}"/>-->
+                    </div>
+                    <div class="col col-sm-4 form-group">
+                        <label for="director">Director:</label>
+                        <input type="text" class="form-control" th:field="*{director}" id="director" placeholder="'James Cameron'"/>
+                        <!--<span th:if="${#fields.hasErrors('degree')}" th:errors="*{degree}"/>-->
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col col-sm-8 form-group">
+                        <label for="descr">Description:</label>
+                        <textarea type="text" class="form-control" th:field="*{description}" id="descr" placeholder="'A seventeen-year-old aristocrat falls in love with a kind but poor artist aboard the luxurious, ill-fated R.M.S. Titanic.'"/>
+                        <!--<span th:if="${#fields.hasErrors('gradYear')}" th:errors="*{gradYear}"/>-->
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col col-sm-8">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</header>
+
+<th:block th:replace="base :: thymejs"/>
+</body>
+</html>
